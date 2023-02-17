@@ -77,6 +77,4 @@ jobs:
           --set image.tag=${{ env.GITHUB_SHA }}
           --wait
         kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o wide  
-    
-  
+        kubectl get services -o wide
