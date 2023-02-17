@@ -1,0 +1,22 @@
+replicaCount: 1
+
+image:
+  name: helm-gke-deploy
+  registry:
+  pullPolicy: IfNotPresent
+  tag:
+
+service:
+  type: LoadBalancer
+  port: 4000
+  targetPort: 4000
+  protocol: TCP
+  name: node-app-service
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
