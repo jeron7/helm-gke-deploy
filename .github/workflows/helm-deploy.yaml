@@ -9,7 +9,7 @@ env:
   GAR_LOCATION: southamerica-east1
   GKE_CLUSTER: ${{ secrets.GKE_CLUSTER }}
   GKE_ZONE: ${{ secrets.GKE_ZONE }}
-  SA_NAME: ${{ secrets.SA_NAME }}
+  SVC_ACCOUNT: ${{ secrets.SVC_ACCOUNT }}
   WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.WORKLOAD_IDENTITY_PROVIDER }}
   REPOSITORY: ${{ secrets.AR_REPOSITORY }}
   IMAGE: helm-gke-deploy
@@ -35,7 +35,7 @@ jobs:
       with:
         token_format: 'access_token'
         workload_identity_provider: ${{ env.WORKLOAD_IDENTITY_PROVIDER }}
-        service_account: "$SA_NAME@$GKE_PROJECT.iam.gserviceaccount.com"
+        service_account: ${{ env.SVC_ACCOUNT }}
         
     # Login to GAR Registry
     - name: Docker configuration
