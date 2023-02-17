@@ -71,10 +71,7 @@ jobs:
     - name: Run Helm Deploy
       run: |
         helm install \
-          node-app-chart-${{ env.GITHUB_SHA }} \
-          .
-          --set image.registry="$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY"
+          node-app-${{ env.GITHUB_SHA }} \
+          ./node-app-chart \
+          --set image.registry="$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY" \
           --set image.tag=${{ env.GITHUB_SHA }}
-          --wait
-        kubectl rollout status deployment/$DEPLOYMENT_NAME
-        kubectl get services -o wide
