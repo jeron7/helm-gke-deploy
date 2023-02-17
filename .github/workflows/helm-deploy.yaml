@@ -71,7 +71,7 @@ jobs:
     - name: Run Helm Deploy
       run: |
         helm install \
-          node-app-${{ env.GITHUB_SHA }} \
+          "node-app-$GITHUB_SHA" \
           ./node-app-chart \
           --set image.registry="$GAR_LOCATION-docker.pkg.dev/$PROJECT_ID/$REPOSITORY" \
-          --set image.tag=${{ env.GITHUB_SHA }}
+          --set image.tag="$GITHUB_SHA"
